@@ -1,6 +1,6 @@
 
 using BmsStudio.Application.Interfaces;
-using BmsStudio.Core.Entities;
+using BmsStudio.Core.Models;
 namespace BmsStudio.Infrastructure.Services;
 public class TelemetryService : ITelemetryService
 {

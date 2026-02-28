@@ -1,6 +1,6 @@
 
 using BmsStudio.Application.Interfaces;
-using BmsStudio.Core.Entities;
+using BmsStudio.Core.Models;
 using BmsStudio.Core.Enums;
 using BmsStudio.Device.Protocol;
 namespace BmsStudio.Infrastructure.Services;
