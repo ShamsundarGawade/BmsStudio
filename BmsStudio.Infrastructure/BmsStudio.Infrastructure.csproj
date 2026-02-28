@@ -1,0 +1,13 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BmsStudio.Application\BmsStudio.Application.csproj" />
+    <ProjectReference Include="..\BmsStudio.Core\BmsStudio.Core.csproj" />
+    <ProjectReference Include="..\BmsStudio.Device\BmsStudio.Device.csproj" />
+  </ItemGroup>
+</Project>
