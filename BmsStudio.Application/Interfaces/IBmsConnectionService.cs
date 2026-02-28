@@ -1,5 +1,5 @@
 
-using BmsStudio.Core.Models;
+using BmsStudio.Core.Entities;
 using BmsStudio.Core.Enums;
 namespace BmsStudio.Application.Interfaces;
 public interface IBmsConnectionService {

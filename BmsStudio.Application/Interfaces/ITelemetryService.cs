@@ -1,5 +1,5 @@
 
-using BmsStudio.Core.Models;
+using BmsStudio.Core.Entities;
 namespace BmsStudio.Application.Interfaces;
 public interface ITelemetryService {
     event Action<PackInfo> PackUpdated;
