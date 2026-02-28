@@ -9,6 +9,8 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\BmsStudio.Application\BmsStudio.Application.csproj" />
+    <ProjectReference Include="..\BmsStudio.HardwareAbstractions\BmsStudio.HardwareAbstractions.csproj" />
+    <ProjectReference Include="..\BmsStudio.Hardware\BmsStudio.Hardware.csproj" />
     <ProjectReference Include="..\BmsStudio.Infrastructure\BmsStudio.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>

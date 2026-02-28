@@ -2,17 +2,20 @@
 using BmsStudio.Application.Interfaces;
 using BmsStudio.Core.Models;
 using BmsStudio.Core.Enums;
-using BmsStudio.Device.Protocol;
+using BmsStudio.HardwareAbstractions.Interfaces;
 namespace BmsStudio.Infrastructure.Services;
 public class BmsConnectionService : IBmsConnectionService
 {
-    private readonly UdsClient _uds;
+    private readonly IUdsClient _udsClient;
     public ConnectionState State { get; private set; } = ConnectionState.Disconnected;
-    public BmsConnectionService(UdsClient uds) { _uds = uds; }
+    public BmsConnectionService(IUdsClient uds)
+    {
+        _udsClient = uds;
+    }
     public async Task<bool> ConnectAsync(CanBaudRate baudRate)
     {
         State = ConnectionState.Connecting;
-        var ok = await _uds.StartSession();
+        var ok = await _udsClient.StartSession();
         State = ok ? ConnectionState.Connected : ConnectionState.Error; return ok;
     }
     public Task DisconnectAsync()

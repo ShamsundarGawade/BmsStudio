@@ -1,5 +1,7 @@
 
-namespace BmsStudio.Device.Transport;
+using BmsStudio.HardwareAbstractions.Interfaces;
+
+namespace BmsStudio.Hardware.Implementations;
 public class CanSimulator : ICanTransport {
     private readonly Random _rand=new();
     public Task SendAsync(byte[] frame)=>Task.CompletedTask;

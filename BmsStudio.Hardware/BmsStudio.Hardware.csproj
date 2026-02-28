@@ -1,13 +1,14 @@
-﻿
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\BmsStudio.Application\BmsStudio.Application.csproj" />
-    <ProjectReference Include="..\BmsStudio.Core\BmsStudio.Core.csproj" />
     <ProjectReference Include="..\BmsStudio.HardwareAbstractions\BmsStudio.HardwareAbstractions.csproj" />
   </ItemGroup>
+
 </Project>
