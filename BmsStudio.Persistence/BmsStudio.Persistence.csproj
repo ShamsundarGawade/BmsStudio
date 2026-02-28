@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BmsStudio.Application\BmsStudio.Application.csproj" />
     <ProjectReference Include="..\BmsStudio.Core\BmsStudio.Core.csproj" />
   </ItemGroup>
 
