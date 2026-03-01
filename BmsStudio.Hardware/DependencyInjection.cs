@@ -14,7 +14,7 @@ namespace BmsStudio.Hardware
         public static IServiceCollection AddHardware(this IServiceCollection services)
         {
             services.AddSingleton<ICanTransport, CanSimulator>();
-            services.AddSingleton<IUdsClient, UdsClient>();
+            services.AddSingleton<IDeviceClient, DeviceClient>();
 
             return services;
         }

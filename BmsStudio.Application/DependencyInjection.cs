@@ -1,14 +1,14 @@
 ﻿using BmsStudio.Application.Interfaces;
-using BmsStudio.Infrastructure.Services;
+using BmsStudio.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BmsStudio.Infrastructure
+namespace BmsStudio.Application
 {
     public static class DependencyInjection
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddSingleton<ITelemetryService, TelemetryService>();
+            services.AddSingleton<IBmsConnectionService, BmsConnectionService>();
 
             return services;
         }
