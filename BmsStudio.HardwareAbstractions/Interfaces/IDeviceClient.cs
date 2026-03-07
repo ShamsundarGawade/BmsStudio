@@ -9,7 +9,7 @@ namespace BmsStudio.HardwareAbstractions.Interfaces
 {
     public interface IDeviceClient
     {
-        Task ConnectAsync();
+        Task<bool> ConnectAsync();
         Task<HardwareData> ReadAsync();
         Task DisconnectAsync();
     }

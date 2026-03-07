@@ -6,7 +6,7 @@ using BmsStudio.HardwareAbstractions.Interfaces;
 
 namespace BmsStudio.Application.Services
 {
-    internal class BmsConnectionService : IBmsConnectionService
+    public class BmsConnectionService : IBmsConnectionService
     {
         private readonly IDeviceClient _deviceClient;
 
@@ -18,8 +18,8 @@ namespace BmsStudio.Application.Services
         }
         public async Task<ConnectionStatusDto> ConnectAsync(CanBaudRate baudRate)
         {
-            await _deviceClient.ConnectAsync();
-            return new ConnectionStatusDto { IsConnected = true };
+            bool isConnected = await _deviceClient.ConnectAsync();
+            return new ConnectionStatusDto { IsConnected = isConnected , Message = isConnected ? "Successfull" : "Failed"  };
         }
 
         public Task DisconnectAsync()
