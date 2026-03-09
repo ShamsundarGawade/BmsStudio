@@ -1,13 +1,15 @@
 
+using Peak.Can.Basic;
 using BmsStudio.HardwareAbstractions.Interfaces;
 using BmsStudio.HardwareAbstractions.Models;
+using Peak.Can.Basic.BackwardCompatibility;
 
 namespace BmsStudio.Hardware.Implementations;
 public class DeviceClient : IDeviceClient
 {
-
+    //private TPCANBaudrate _baudRate = TPCANBaudrate.PCAN_BAUD_500K;
     private bool _isConnected;
-    //private TPCANHandle _canHandle = TPCANHandle.PCAN_USBBUS1; // Adjust as needed
+    private ushort _canHandle = PCANBasic.PCAN_USBBUS1; // Adjust as needed
     public async Task<bool> ConnectAsync()
     {
         try
@@ -55,22 +57,22 @@ public class DeviceClient : IDeviceClient
         // Open the CAN port asynchronously
         return await Task.Run(() =>
         {
-            // Initialize the CAN channel at 500 kbit/s (adjust as needed)
-            //TPCANStatus status = PCANBasic.Initialize(
-            //    _canHandle,
-            //    TPCANBaudrate.PCAN_BAUD_500K);
+            //Initialize the CAN channel at 500 kbit / s(adjust as needed)
+            TPCANStatus status = PCANBasic.Initialize(
+                _canHandle,
+                TPCANBaudrate.PCAN_BAUD_500K);
 
-            //if (status == TPCANStatus.PCAN_ERROR_OK)
-            //{
-            //    // Port opened successfully
-            //    return true;
-            //}
-            //else
-            //{
-            //    // Handle error (optional: log status)
-            //    return false;
-            //}
-            return true; // Simulate successful connection for this example
+            if (status == TPCANStatus.PCAN_ERROR_OK)
+            {
+                // Port opened successfully
+                return true;
+            }
+            else
+            {
+                // Handle error (optional: log status)
+                return false;
+            }
+            // Simulate successful connection for this example
         });
     }
 }
