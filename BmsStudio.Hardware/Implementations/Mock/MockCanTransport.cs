@@ -1,4 +1,5 @@
-﻿using BmsStudio.HardwareAbstractions.Interfaces;
+﻿using BmsStudio.Core.Entities;
+using BmsStudio.HardwareAbstractions.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,14 @@ namespace BmsStudio.Hardware.Implementations.Mock
 {
     internal class MockCanTransport : ICanTransport
     {
-        public Task<byte[]> ReceiveAsync()
+        public event Action<CanMessage>? MessageReceived;
+
+        public void StartReading()
         {
             throw new NotImplementedException();
         }
 
-        public Task SendAsync(byte[] frame)
+        public void StopReading()
         {
             throw new NotImplementedException();
         }

@@ -15,17 +15,16 @@ namespace BmsStudio.UI.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly IBmsConnectionService _connectionService;
-        private readonly ICanListenerService _canListenerService
+        
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public ICommand ConnectCommand { get; }
         public string ConnectionMessage { get; set; } = string.Empty; // Fix 1: Initialize property
 
-        public MainViewModel(IBmsConnectionService connectionService, ICanListenerService canListenerService)
+        public MainViewModel(IBmsConnectionService connectionService)
         {
             _connectionService = connectionService;
-            _canListenerService = canListenerService;
             ConnectCommand = new RelayCommand(async () => await ConnectAsync());
         }
 
@@ -34,7 +33,7 @@ namespace BmsStudio.UI.ViewModels
             var status = await _connectionService.ConnectAsync(CanBaudRate.Baud500K);
             ConnectionMessage = status.IsConnected ? "Connected!" : "Connection failed.";
             OnPropertyChanged(nameof(ConnectionMessage));
-            _canListenerService.Start();
+            
         }
 
         // Fix 2: Implement OnPropertyChanged method

@@ -7,6 +7,11 @@ using Peak.Can.Basic.BackwardCompatibility;
 namespace BmsStudio.Hardware.Implementations;
 public class DeviceClient : IDeviceClient
 {
+    private readonly ICanListenerService _canListenerService;
+    public DeviceClient(ICanListenerService canListenerService)
+    {
+        _canListenerService = canListenerService;
+    }
     //private TPCANBaudrate _baudRate = TPCANBaudrate.PCAN_BAUD_500K;
     private bool _isConnected;
     private ushort _canHandle = PCANBasic.PCAN_USBBUS1; // Adjust as needed
@@ -17,6 +22,7 @@ public class DeviceClient : IDeviceClient
             // Actual hardware connection logic here
             // For example, open CAN port, check baud rate, etc.
             _isConnected = await OpenCanPortAsync();
+            _canListenerService.Start();
             return _isConnected;
         }
         catch (Exception ex)

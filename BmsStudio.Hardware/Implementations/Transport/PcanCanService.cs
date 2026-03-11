@@ -31,8 +31,8 @@ namespace BmsStudio.Hardware.Implementations.Transport
 
         private void ReadLoop()
         {
-            while (_reading)
-            {
+           // while (_reading)
+           // {
                 TPCANMsg msg;
                 TPCANTimestamp timestamp;
 
@@ -50,7 +50,7 @@ namespace BmsStudio.Hardware.Implementations.Transport
 
                     MessageReceived?.Invoke(canMessage);
                 }
-            }
+            //}
         }
     }
 }
