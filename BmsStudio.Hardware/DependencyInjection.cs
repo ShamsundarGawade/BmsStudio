@@ -1,4 +1,5 @@
 ﻿using BmsStudio.Hardware.Implementations;
+using BmsStudio.Hardware.Implementations.Transport;
 using BmsStudio.HardwareAbstractions.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -15,6 +16,7 @@ namespace BmsStudio.Hardware
         {
             services.AddSingleton<ICanTransport, CanSimulator>();
             services.AddSingleton<IDeviceClient, DeviceClient>();
+            services.AddSingleton<ICanTransport, PcanCanService>();
 
             return services;
         }

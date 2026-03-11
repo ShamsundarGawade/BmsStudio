@@ -1,9 +1,19 @@
 
+using BmsStudio.Core.Entities;
 using BmsStudio.HardwareAbstractions.Interfaces;
 
 namespace BmsStudio.Hardware.Implementations;
-public class CanSimulator : ICanTransport {
-    private readonly Random _rand=new();
-    public Task SendAsync(byte[] frame)=>Task.CompletedTask;
-    public Task<byte[]> ReceiveAsync(){var b=new byte[8];_rand.NextBytes(b);return Task.FromResult(b);}
+public class CanSimulator : ICanTransport
+{
+    public event Action<CanMessage>? MessageReceived;
+
+    public void StartReading()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void StopReading()
+    {
+        throw new NotImplementedException();
+    }
 }
