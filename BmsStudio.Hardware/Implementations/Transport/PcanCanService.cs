@@ -1,6 +1,6 @@
 ﻿using BmsStudio.Core.Entities;
 using BmsStudio.HardwareAbstractions.Interfaces;
-using Peak.Can.Basic.BackwardCompatibility;
+using Peak.Can.Basic;
 using System;
 using System.Collections.Generic;
 using System.Linq;

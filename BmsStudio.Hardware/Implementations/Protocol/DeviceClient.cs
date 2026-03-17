@@ -2,7 +2,6 @@
 using Peak.Can.Basic;
 using BmsStudio.HardwareAbstractions.Interfaces;
 using BmsStudio.HardwareAbstractions.Models;
-using Peak.Can.Basic.BackwardCompatibility;
 
 namespace BmsStudio.Hardware.Implementations;
 public class DeviceClient : IDeviceClient
