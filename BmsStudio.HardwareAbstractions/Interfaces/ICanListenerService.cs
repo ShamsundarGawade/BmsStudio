@@ -10,8 +10,8 @@ namespace BmsStudio.HardwareAbstractions.Interfaces;
 public interface ICanListenerService
 {
     void Start();
-    void Stop();
+    //Task Stop();
 
-    event Action<CanMessage>? MessageReceived;
+    //event Action<CanMessage>? MessageReceived;
 }
 

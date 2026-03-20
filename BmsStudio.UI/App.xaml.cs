@@ -1,4 +1,5 @@
 
+using BmsStudio.Application;
 using BmsStudio.Hardware;
 using BmsStudio.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ public partial class App : System.Windows.Application
         {
             services.AddInfrastructure();
             services.AddHardware();
+            services.AddApplication();
             services.AddSingleton<MainWindow>();
         }).Build();
         await _host.StartAsync();

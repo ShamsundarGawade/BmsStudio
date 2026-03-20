@@ -5,30 +5,31 @@ namespace BmsStudio.Application.Services
 {
     public class CanListenerService : ICanListenerService
     {
-        private readonly ICanTransport _canService;
+        private readonly ICanTransport _transport;
 
-        public CanListenerService(ICanTransport canService)
+        public event Action<uint, byte[]>? MessageReceived;
+        //public event Action<CanMessage>? MessageReceived;
+
+        public CanListenerService(ICanTransport transport)
         {
-            _canService = canService;
-
-            _canService.MessageReceived += OnMessageReceived;
+            _transport = transport;
         }
 
-        public event Action<CanMessage>? MessageReceived;
 
         public void Start()
         {
-            _canService.StartReading();
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    if (_transport.TryReceive(out var id, out var data))
+                    {
+                        MessageReceived?.Invoke(id, data);
+                    }
+                }
+            });
         }
 
-        public void Stop()
-        {
-            _canService.StopReading();
-        }
 
-        private void OnMessageReceived(CanMessage msg)
-        {
-            Console.WriteLine($"ID:{msg.Id} Data:{BitConverter.ToString(msg.Data)}");
-        }
     }
 }
